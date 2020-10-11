@@ -1,13 +1,56 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  background-color: dimgrey;
+  color: whitesmoke;
+  overflow: hidden;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#App,
+#root {
+  height: 100%;
+  width: 100%;
+  background: -webkit-linear-gradient(90deg, #1de790, #19a6c3);
+  background: -moz-linear-gradient(90deg, #1de790, #19a6c3);
+  background: -ms-linear-gradient(90deg, #1de790, #19a6c3);
+  background: -o-linear-gradient(90deg, #1de790, #19a6c3);
+  background: linear-gradient(90deg, #1de790, #19a6c3);
+
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.page-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: -webkit-linear-gradient(90deg, #1de790, #19a6c3);
+  background: -moz-linear-gradient(90deg, #1de790, #19a6c3);
+  background: -ms-linear-gradient(90deg, #1de790, #19a6c3);
+  background: -o-linear-gradient(90deg, #1de790, #19a6c3);
+  background: linear-gradient(90deg, #1de790, #19a6c3);
 }

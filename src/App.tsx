@@ -1,7 +1,15 @@
 import React from "react";
+import { RootProvider } from "./providers";
+import { Routes } from "./routes";
 
 const App = () => {
-  return <div className="App">{process.env.REACT_APP_APP_ID}</div>;
+  return (
+    <div id="App">
+      <RootProvider>
+        <Routes />
+      </RootProvider>
+    </div>
+  );
 };
 
 export default App;
