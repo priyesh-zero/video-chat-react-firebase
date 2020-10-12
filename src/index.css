@@ -54,3 +54,18 @@ code {
   background: -o-linear-gradient(90deg, #1de790, #19a6c3);
   background: linear-gradient(90deg, #1de790, #19a6c3);
 }
+
+.btn.gradient {
+  background: -webkit-linear-gradient(-90deg, #1de790, #19a6c3) !important;
+  background: -moz-linear-gradient(-90deg, #1de790, #19a6c3) !important;
+  background: -ms-linear-gradient(-90deg, #1de790, #19a6c3) !important;
+  background: -o-linear-gradient(-90deg, #1de790, #19a6c3) !important;
+  background: linear-gradient(-90deg, #1de790, #19a6c3) !important;
+  background-size: 200% !important;
+  background-position: 0 !important;
+  transition: all 500ms;
+}
+
+.btn.gradient:hover {
+  background-position: 100% !important;
+}

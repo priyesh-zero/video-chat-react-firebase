@@ -1,19 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import React, { useContext } from "react";
+import { AuthContext } from "src/providers/contexts/Auth";
 
-import { routeVariant } from "src/framer-variants/routes";
+import { PageContainer } from "./PageContainer";
 
 export const HomePage = () => {
+  const { user } = useContext(AuthContext);
+
   return (
-    <motion.div
-      variants={routeVariant}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className="page-container"
-    >
-      <Link to="/login">Login Page</Link>
-    </motion.div>
+    <PageContainer>
+      <pre>{JSON.stringify(user, null, 4)}</pre>
+    </PageContainer>
   );
 };
