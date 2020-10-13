@@ -11,6 +11,7 @@ import { useBeforeunload } from "react-beforeunload";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Status } from "src/enum/status";
 import { auth, firestore } from "src/firebase";
+import { PeerContext } from "./Peer";
 import { ToastContext } from "./Toast";
 
 interface AuthContextValues {
@@ -27,25 +28,30 @@ export const AuthContext = createContext<AuthContextValues>({
 
 type SetUserData = (user: User, status: Status) => void;
 
-const setUserData: SetUserData = (user, status) => {
-  firestore.doc(`users/${user.uid}`).set({
-    email: user.email,
-    displayName: user.displayName,
-    photoURL: user.photoURL,
-    status: status,
-  });
-};
-
 export const AuthProvider: FC = ({ children }) => {
   const [user, , error] = useAuthState(auth);
   const { showToast } = useContext(ToastContext);
+  const { peerId } = useContext(PeerContext);
   const prevUser = useRef(user);
+
+  const setUserData = useCallback<SetUserData>(
+    (user, status) => {
+      firestore.doc(`users/${user.uid}`).set({
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        peerId,
+        status: status,
+      });
+    },
+    [peerId]
+  );
 
   const unloadUser = useCallback(() => {
     if (user) {
       setUserData(user, Status.INACTIVE);
     }
-  }, [user]);
+  }, [user, setUserData]);
 
   useBeforeunload(unloadUser);
 
@@ -76,7 +82,7 @@ export const AuthProvider: FC = ({ children }) => {
         setUserData(user, Status.INACTIVE);
       }
     };
-  }, [user, showToast, error]);
+  }, [user, showToast, error, setUserData]);
 
   const login = async (email: string, password: string) => {
     /* Login Logic here */

@@ -3,4 +3,5 @@ export interface UserClaims {
   photoURL: string | null;
   status: string;
   email: string;
+  peerId: string;
 }
