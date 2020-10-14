@@ -53,6 +53,7 @@ export const PeerProvider: FC = ({ children }) => {
       host: process.env.REACT_APP_PEER_SERVER,
       port: +process.env.REACT_APP_PEER_PORT!,
       path: "/",
+      secure: true,
     });
     peer.current!.on("open", setPeerId);
     peer.current!.on("call", (call) => {
